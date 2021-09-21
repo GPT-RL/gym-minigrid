@@ -1,5 +1,7 @@
 import math
 import hashlib
+from collections import OrderedDict
+
 import gym
 from enum import IntEnum
 import numpy as np
@@ -13,17 +15,30 @@ TILE_PIXELS = 32
 # Map of color names to RGB values
 COLORS = {
     "red": np.array([255, 0, 0]),
-    "green": np.array([0, 255, 0]),
-    "blue": np.array([0, 0, 255]),
-    "purple": np.array([112, 39, 195]),
+    "crimson": np.array([128, 0, 0]),
+    "orange": np.array([255, 128, 0]),
+    "brown": np.array([128, 64, 0]),
     "yellow": np.array([255, 255, 0]),
-    "grey": np.array([100, 100, 100]),
+    "olive": np.array([128, 128, 0]),
+    "green": np.array([0, 255, 0]),
+    "forest green": np.array([0, 128, 0]),
+    "cyan": np.array([0, 255, 255]),
+    "teal": np.array([0, 128, 128]),
+    "blue": np.array([0, 0, 255]),
+    "navy blue": np.array([0, 0, 128]),
+    "pink": np.array([255, 0, 255]),
+    "magenta": np.array([128, 0, 128]),
+    "purple": np.array([128, 0, 255]),
+    "grey": np.array([128, 128, 128]),
+    "black": np.array([16, 16, 16]),
+    "white": np.array([255, 255, 255]),
 }
+COLORS = OrderedDict(COLORS)
 
 COLOR_NAMES = sorted(list(COLORS.keys()))
 
 # Used to map colors to integers
-COLOR_TO_IDX = {"red": 0, "green": 1, "blue": 2, "purple": 3, "yellow": 4, "grey": 5}
+COLOR_TO_IDX = OrderedDict({c: i for i, c in enumerate(COLORS)})
 
 IDX_TO_COLOR = dict(zip(COLOR_TO_IDX.values(), COLOR_TO_IDX.keys()))
 
