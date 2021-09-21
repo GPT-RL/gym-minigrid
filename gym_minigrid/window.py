@@ -5,9 +5,10 @@ import numpy as np
 try:
     import matplotlib.pyplot as plt
 except:
-    print('To display the environment in a window, please install matplotlib, eg:')
-    print('pip3 install --user matplotlib')
+    print("To display the environment in a window, please install matplotlib, eg:")
+    print("pip3 install --user matplotlib")
     sys.exit(-1)
+
 
 class Window:
     """
@@ -26,8 +27,8 @@ class Window:
         self.fig.canvas.set_window_title(title)
 
         # Turn off x/y axis numbering/ticks
-        self.ax.xaxis.set_ticks_position('none')
-        self.ax.yaxis.set_ticks_position('none')
+        self.ax.xaxis.set_ticks_position("none")
+        self.ax.yaxis.set_ticks_position("none")
         _ = self.ax.set_xticklabels([])
         _ = self.ax.set_yticklabels([])
 
@@ -37,7 +38,7 @@ class Window:
         def close_handler(evt):
             self.closed = True
 
-        self.fig.canvas.mpl_connect('close_event', close_handler)
+        self.fig.canvas.mpl_connect("close_event", close_handler)
 
     def show_img(self, img):
         """
@@ -46,7 +47,7 @@ class Window:
 
         # Show the first image of the environment
         if self.imshow_obj is None:
-            self.imshow_obj = self.ax.imshow(img, interpolation='bilinear')
+            self.imshow_obj = self.ax.imshow(img, interpolation="bilinear")
 
         self.imshow_obj.set_data(img)
         self.fig.canvas.draw()
@@ -68,7 +69,7 @@ class Window:
         """
 
         # Keyboard handler
-        self.fig.canvas.mpl_connect('key_press_event', key_handler)
+        self.fig.canvas.mpl_connect("key_press_event", key_handler)
 
     def show(self, block=True):
         """
