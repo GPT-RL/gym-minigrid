@@ -1,5 +1,7 @@
 import math
 import hashlib
+from collections import OrderedDict
+
 import gym
 from enum import IntEnum
 import numpy as np
@@ -19,11 +21,12 @@ COLORS = {
     "yellow": np.array([255, 255, 0]),
     "grey": np.array([100, 100, 100]),
 }
+COLORS = OrderedDict(COLORS)
 
 COLOR_NAMES = sorted(list(COLORS.keys()))
 
 # Used to map colors to integers
-COLOR_TO_IDX = {"red": 0, "green": 1, "blue": 2, "purple": 3, "yellow": 4, "grey": 5}
+COLOR_TO_IDX = OrderedDict({c: i for i, c in enumerate(COLORS)})
 
 IDX_TO_COLOR = dict(zip(COLOR_TO_IDX.values(), COLOR_TO_IDX.keys()))
 
